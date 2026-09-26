@@ -4,13 +4,21 @@
 
 前后端分离架构：后端 SpringBoot 3 + Spring AI + MyBatis-Plus + MySQL/Redis + JWT；前端 React 19 + TypeScript + Vite + Ant Design 5 + ECharts。
 
-> 无 MySQL、无 AI API Key 也能一键跑通全部功能（H2 内存库 + 内置 Mock 流式模型）。
+> 没有 MySQL、无 AI API Key 也能一键跑通全部功能（H2 内存库 + 内置 Mock 流式模型）。
 
 ```
 mental-health-assistant/
 ├── backend/     # Spring Boot 3 + Spring AI 后端服务（端口 8080）
 └── frontend/    # React 19 + Vite 前端（端口 5173，/api 代理到后端）
 ```
+
+## 页面效果
+##### 页面显示
+![screenshot](./images/1.png)
+
+![screenshot](./images/2.png)
+
+![screenshot](./images/3.png)
 
 ## 功能总览
 

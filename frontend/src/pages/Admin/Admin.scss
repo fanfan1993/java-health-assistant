@@ -1,0 +1,64 @@
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+
+  .stat-card {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    animation: fadeUp 0.5s ease both;
+    @include hover-float;
+
+    .stat-icon {
+      @include flex-center;
+      width: 50px;
+      height: 50px;
+      border-radius: $radius-md;
+      color: #fff;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: $text-primary;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: $text-secondary;
+    }
+  }
+}
+
+.admin-table {
+  .user-cell {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .user-nickname {
+      font-weight: 600;
+      color: $text-primary;
+    }
+    .user-username {
+      font-size: 12px;
+      color: $text-light;
+    }
+  }
+  .role-tag {
+    padding: 2px 12px;
+    border-radius: $radius-full;
+    font-size: 12px;
+    background: rgba(0, 206, 201, 0.12);
+    color: $secondary;
+
+    &.admin {
+      background: rgba(108, 92, 231, 0.12);
+      color: $primary;
+    }
+  }
+}

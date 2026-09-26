@@ -1,0 +1,54 @@
+.profile-page {
+  display: flex;
+  gap: $spacing-lg;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  .profile-card {
+    width: 460px;
+    max-width: 100%;
+    @include hover-float;
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+      margin-bottom: $spacing-lg;
+
+      .profile-avatar {
+        background: linear-gradient(135deg, #6c5ce7, #00cec9);
+        font-size: 34px;
+        font-weight: 700;
+        animation: float 3.5s ease-in-out infinite;
+      }
+      h2 {
+        font-size: 24px;
+        font-weight: 800;
+      }
+      .profile-username {
+        color: $text-secondary;
+        margin: 2px 0 6px;
+      }
+    }
+    .profile-desc {
+      margin-bottom: $spacing-lg;
+    }
+    .logout-btn.ant-btn-primary {
+      @include gradient-bg;
+    }
+  }
+  .profile-quote {
+    flex: 1;
+    min-width: 240px;
+    border-radius: $radius-lg;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+
+    p {
+      color: $text-secondary;
+      font-size: 15px;
+      line-height: 2;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  user-select: none;
+
+  &-icon {
+    font-size: 26px;
+    animation: float 3.5s ease-in-out infinite;
+  }
+  &-text {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  &-sm &-icon {
+    font-size: 20px;
+  }
+  &-sm &-text {
+    font-size: 17px;
+  }
+}

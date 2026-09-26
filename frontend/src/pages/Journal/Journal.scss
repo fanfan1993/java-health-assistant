@@ -1,0 +1,68 @@
+.journal-page {
+  .journal-toolbar {
+    display: flex;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+
+    .journal-search {
+      max-width: 320px;
+    }
+  }
+  .journal-empty {
+    margin-top: 80px;
+  }
+  .journal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-md;
+
+    .journal-card {
+      animation: fadeUp 0.45s ease both;
+      @include hover-float;
+
+      .journal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .journal-mood {
+          font-size: 30px;
+          line-height: 1;
+        }
+        .journal-delete {
+          color: $text-light;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          &:hover {
+            color: $danger;
+            transform: scale(1.15);
+          }
+        }
+      }
+      .journal-content {
+        color: $text-primary;
+        line-height: 1.7;
+        margin: $spacing-sm 0;
+        @include ellipsis(4);
+        white-space: pre-wrap;
+      }
+      .journal-tags {
+        min-height: 22px;
+      }
+      .journal-time {
+        color: $text-light;
+        font-size: 12px;
+        margin-top: $spacing-sm;
+      }
+    }
+  }
+  .journal-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+    color: $text-secondary;
+  }
+}

@@ -1,0 +1,26 @@
+# 本地无 MySQL 时的替代配置：H2 内存库 + 启动时自动执行 schema.sql
+# 启动方式：--spring.profiles.active=h2
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    # MODE=MySQL 兼容 MySQL 语法；DB_CLOSE_DELAY=-1 保持连接期间数据不丢失
+    url: jdbc:h2:mem:mind_assistant;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+      # 遇到「表已存在」等错误不中断启动（幂等建表）
+      continue-on-error: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

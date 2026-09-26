@@ -1,0 +1,61 @@
+// 玻璃拟态卡片
+@use './variables' as *;
+
+@mixin glass($blur: 16px, $bg: rgba(255, 255, 255, 0.55)) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: $shadow-glass;
+}
+
+// 渐变文字
+@mixin gradient-text {
+  background: $gradient-text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// 渐变按钮底色
+@mixin gradient-bg {
+  background: $gradient-primary;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  transition: background-position 0.4s ease;
+  &:hover {
+    background-position: 100% 50%;
+  }
+}
+
+// 卡片 hover 浮起
+@mixin hover-float($y: -6px) {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  &:hover {
+    transform: translateY($y);
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+// 文本溢出省略
+@mixin ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// flex 居中
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

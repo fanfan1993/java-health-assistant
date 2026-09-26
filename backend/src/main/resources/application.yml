@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mental-health-assistant
+
+  # 数据源（MySQL）
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mind_assistant?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    username: root
+    password: "123456"
+
+  # 不自动执行 SQL 初始化脚本（schema.sql 供手动执行 / h2 profile 使用）
+  sql:
+    init:
+      mode: never
+
+  # Redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      database: 0
+
+  # Spring AI OpenAI 配置
+  # 默认使用 sk-xxx 占位符：占位状态下项目自动切换为内置 Mock 模型，本地无需 API Key 即可完整跑通
+  ai:
+    openai:
+      base-url: ${AI_BASE_URL:https://api.openai.com}
+      api-key: ${AI_API_KEY:sk-xxx-please-replace-with-your-real-key}
+      chat:
+        options:
+          model: ${AI_MODEL:gpt-4o-mini}
+          temperature: 0.7
+
+mybatis-plus:
+  configuration:
+    # 数据库下划线字段 -> Java 驼峰属性
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+
+# JWT 配置：secret 请在生产环境替换为足够长的随机字符串
+jwt:
+  secret: mind-assistant-jwt-secret-please-change-me-2026
+  # 过期时间：7 天（毫秒）
+  expire-millis: 604800000
+
+logging:
+  level:
+    com.mind.assistant: info

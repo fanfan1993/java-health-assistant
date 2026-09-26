@@ -1,0 +1,61 @@
+.auth-page {
+  position: relative;
+  @include flex-center;
+  min-height: 100vh;
+  padding: $spacing-lg;
+  overflow: hidden;
+
+  .auth-card {
+    position: relative;
+    z-index: 1;
+    width: 420px;
+    max-width: 100%;
+    padding: $spacing-xl 40px 32px;
+    animation: fadeUp 0.6s ease both;
+
+    .auth-subtitle {
+      margin: $spacing-sm 0 $spacing-lg;
+      color: $text-secondary;
+      font-size: 14px;
+    }
+    .auth-alert {
+      margin-bottom: $spacing-md;
+    }
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
+
+      .field-label {
+        font-size: 13px;
+        color: $text-secondary;
+        margin: $spacing-sm 0 4px;
+      }
+      // 输入框聚焦发光
+      :global(.ant-input-affix-wrapper):focus-within,
+      :global(.ant-input):focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.18);
+      }
+      .auth-submit {
+        margin-top: $spacing-lg;
+        height: 44px;
+        font-size: 16px;
+      }
+    }
+    .auth-footer {
+      margin-top: $spacing-lg;
+      text-align: center;
+      color: $text-secondary;
+      font-size: 14px;
+
+      a {
+        color: $primary;
+        font-weight: 600;
+        &:hover {
+          color: $secondary;
+        }
+      }
+    }
+  }
+}

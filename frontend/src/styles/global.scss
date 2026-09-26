@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', sans-serif;
+  color: $text-primary;
+  background: linear-gradient(160deg, #eef0ff 0%, #e8fbfa 45%, #f6f0ff 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+// ---------- 背景光斑 blob ----------
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+  animation: blobFloat 14s ease-in-out infinite;
+
+  &.blob-1 {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -100px;
+    background: radial-gradient(circle, #a29bfe 0%, transparent 70%);
+  }
+  &.blob-2 {
+    width: 360px;
+    height: 360px;
+    bottom: -100px;
+    right: -80px;
+    background: radial-gradient(circle, #55efc4 0%, transparent 70%);
+    animation-delay: -4s;
+    animation-duration: 18s;
+  }
+  &.blob-3 {
+    width: 300px;
+    height: 300px;
+    top: 40%;
+    left: 60%;
+    background: radial-gradient(circle, #6c5ce7 0%, transparent 70%);
+    opacity: 0.35;
+    animation-delay: -8s;
+    animation-duration: 16s;
+  }
+  &.blob-4 {
+    width: 260px;
+    height: 260px;
+    top: 10%;
+    right: 20%;
+    background: radial-gradient(circle, #00cec9 0%, transparent 70%);
+    opacity: 0.4;
+    animation-delay: -11s;
+    animation-duration: 20s;
+  }
+}
+
+// ---------- 玻璃卡片基类 ----------
+.glass-card {
+  @include glass;
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &.hoverable:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+// ---------- 渐变文字 ----------
+.gradient-text {
+  @include gradient-text;
+}
+
+// ---------- 滚动条美化 ----------
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#6c5ce7, #00cec9);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $primary;
+}
+
+// ---------- 关键帧 ----------
+@keyframes blobFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(48px, -36px) scale(1.12);
+  }
+  66% {
+    transform: translate(-32px, 28px) scale(0.92);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ---------- 通用动画工具类 ----------
+.anim-fadeUp {
+  animation: fadeUp 0.5s ease both;
+}
+.anim-slideIn {
+  animation: slideIn 0.35s ease both;
+}
+.anim-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+.anim-pulse {
+  animation: pulse 1.6s ease-in-out infinite;
+}

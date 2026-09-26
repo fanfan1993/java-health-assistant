@@ -1,0 +1,184 @@
+.scale-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-md;
+
+  .scale-card {
+    cursor: pointer;
+    animation: fadeUp 0.5s ease both;
+    @include hover-float;
+
+    .scale-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: $text-primary;
+    }
+    .scale-desc {
+      color: $text-secondary;
+      font-size: 13px;
+      line-height: 1.7;
+      margin: $spacing-sm 0 $spacing-md;
+      @include ellipsis(2);
+      min-height: 44px;
+    }
+    .scale-footer {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+
+      .scale-start {
+        margin-left: auto;
+        color: $primary;
+        font-weight: 600;
+        font-size: 13px;
+        transition: transform 0.25s ease;
+      }
+    }
+    &:hover .scale-start {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.quiz {
+  max-width: 760px;
+  margin: 0 auto;
+
+  .quiz-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 800;
+    }
+  }
+  .quiz-progress {
+    margin-bottom: $spacing-lg;
+  }
+  .quiz-questions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    .question-card {
+      animation: fadeUp 0.4s ease both;
+
+      .question-title {
+        font-weight: 600;
+        margin-bottom: $spacing-md;
+        color: $text-primary;
+      }
+      .option-list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+
+        .option-item {
+          display: flex;
+          align-items: center;
+          gap: $spacing-sm;
+          padding: 10px 14px;
+          border-radius: $radius-md;
+          border: 1.5px solid rgba(108, 92, 231, 0.15);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          color: $text-secondary;
+
+          &:hover {
+            border-color: $primary-light;
+            background: rgba(108, 92, 231, 0.05);
+          }
+          &.selected {
+            border-color: $primary;
+            background: rgba(108, 92, 231, 0.08);
+            color: $primary;
+            font-weight: 600;
+
+            .option-radio {
+              border-color: $primary;
+              background: $gradient-primary;
+              box-shadow: inset 0 0 0 3px #fff;
+            }
+          }
+          .option-radio {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1.5px solid $text-light;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+          }
+        }
+      }
+    }
+  }
+  .quiz-footer {
+    margin-top: $spacing-lg;
+    text-align: center;
+  }
+}
+
+.result-view {
+  @include flex-center;
+  padding: $spacing-lg 0;
+
+  .result-card {
+    width: 520px;
+    max-width: 100%;
+    text-align: center;
+    padding: $spacing-xl;
+
+    .score-ring {
+      position: relative;
+      @include flex-center;
+      margin: $spacing-lg 0;
+
+      .score-center {
+        position: absolute;
+        @include flex-center;
+        flex-direction: column;
+
+        .score-num {
+          font-size: 44px;
+          font-weight: 800;
+          color: $primary;
+          line-height: 1;
+        }
+        .score-unit {
+          color: $text-light;
+          font-size: 13px;
+          margin-top: 4px;
+        }
+      }
+    }
+    .level-badge {
+      font-size: 15px;
+      padding: 4px 18px;
+      border-radius: $radius-full;
+      margin-bottom: $spacing-lg;
+    }
+    .suggestion {
+      text-align: left;
+      background: rgba(108, 92, 231, 0.06);
+      border-radius: $radius-md;
+      padding: $spacing-md;
+      margin-bottom: $spacing-lg;
+
+      h4 {
+        color: $primary;
+        margin-bottom: $spacing-sm;
+      }
+      p {
+        color: $text-secondary;
+        line-height: 1.8;
+      }
+      .detail {
+        margin-top: $spacing-sm;
+        font-size: 13px;
+      }
+    }
+  }
+}

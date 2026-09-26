@@ -1,0 +1,14 @@
+.gradient-btn.ant-btn-primary {
+  border: none;
+  @include gradient-bg;
+  box-shadow: $shadow-card;
+  font-weight: 600;
+
+  &:hover {
+    box-shadow: $shadow-glow;
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
